@@ -1,0 +1,19 @@
+<launch>
+    <!-- URDF description -->
+    <param name="robot_description" command="$(find xacro)/xacro '$(find simple_rosbot_tf)/urdf/rosbot.xacro'"/>
+
+    <!-- Robot State Publisher -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+    <!-- Joint State Publisher (GUI version) -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+
+    <!-- Joint State Publisher (reads /joint_states topic). Uncomment to switch with GUI -->
+    <!--node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" /-->
+
+    
+    <!-- TF Listener -->
+    <node name="rosbot_tf_listener" pkg="simple_rosbot_tf" type="tf_listener.py" output="screen" />
+
+</launch>
+
